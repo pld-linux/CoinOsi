@@ -1,0 +1,24 @@
+--- Osi-0.106.10/Osi/src/OsiGlpk/Makefile.am.orig	2013-12-15 00:53:52.000000000 +0100
++++ Osi-0.106.10/Osi/src/OsiGlpk/Makefile.am	2014-12-04 22:07:42.332949046 +0100
+@@ -21,7 +21,7 @@
+ 
+ # List all additionally required libraries
+ if DEPENDENCY_LINKING
+-libOsiGlpk_la_LIBADD = $(OSILIB_LIBS) ../Osi/libOsi.la
++libOsiGlpk_la_LIBADD = $(OSILIB_LIBS) ../Osi/libOsi.la $(GLPK_LIBS)
+ endif
+ 
+ # This is for libtool
+--- Osi-0.106.10/Osi/src/OsiSpx/Makefile.am.orig	2011-08-14 12:37:34.000000000 +0200
++++ Osi-0.106.10/Osi/src/OsiSpx/Makefile.am	2014-12-04 22:08:00.876281600 +0100
+@@ -16,6 +16,10 @@
+ # List all source files for this library, including headers
+ libOsiSpx_la_SOURCES = OsiSpxSolverInterface.cpp OsiSpxSolverInterface.hpp
+ 
++if DEPENDENCY_LINKING
++libOsiSpx_la_LIBADD = $(OSILIB_LIBS) ../Osi/libOsi.la $(SOPLEX_LIBS)
++endif
++
+ # This is for libtool
+ libOsiSpx_la_LDFLAGS = $(LT_LDFLAGS)
+ 

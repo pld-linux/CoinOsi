@@ -1,0 +1,11 @@
+--- Osi-0.106.10/Osi/Makefile.am.orig	2011-10-13 22:35:48.000000000 +0200
++++ Osi-0.106.10/Osi/Makefile.am	2014-12-04 18:37:38.506811310 +0100
+@@ -104,7 +104,7 @@
+ install-data-hook:
+ 	@$(mkdir_p) "$(addlibsdir)"
+ if COIN_HAS_PKGCONFIG
+-	PKG_CONFIG_PATH=@COIN_PKG_CONFIG_PATH@ \
++	PKG_CONFIG_PATH="$$(echo @COIN_PKG_CONFIG_PATH@ | sed -e "s@^@$(DESTDIR)@;s@:@:$(DESTDIR)@g")" \
+ 	$(PKG_CONFIG) --libs osi > $(addlibsdir)/osi_addlibs.txt
+ else
+ if COIN_CXX_IS_CL
