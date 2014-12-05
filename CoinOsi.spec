@@ -202,6 +202,12 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
+%post	glpk -p /sbin/ldconfig
+%postun	glpk -p /sbin/ldconfig
+
+%post	soplex -p /sbin/ldconfig
+%postun	soplex -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
 %doc Osi/{AUTHORS,CHANGELOG,LICENSE,README}
